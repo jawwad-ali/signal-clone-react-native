@@ -2,6 +2,7 @@ import React, { useLayoutEffect, useState } from 'react'
 import { KeyboardAvoidingView, StyleSheet, View } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import { Button, Input, Text } from "react-native-elements"
+import { auth } from '../firebase'
 
 const Register = ({ navigation }) => {
 
@@ -16,8 +17,18 @@ const Register = ({ navigation }) => {
         })
     }, [navigation])
 
+    // user registration function
     const register = () => {
+        auth
+            .createUserWithEmailAndPassword(email, password)
+            .then((authUser) => {
+                authUser.user.updateProfile({
+                    displayName: name,
+                    photoURL: imageUrl || "https://cencup.com/wp-content/uploads/2019/07/avatar-placeholder.png",
 
+                })
+            })
+            .catch((error) => alert(error.message))
     }
 
     return (
@@ -30,7 +41,7 @@ const Register = ({ navigation }) => {
             <View style={styles.inputContainer}>
                 <Input
                     placeholder="Full Name"
-                    autoFocus type="text"
+                    type="text"
                     value={name}
                     onChangeText={(text) => setName(text)}
                 />
