@@ -4,8 +4,6 @@ import { ListItem, Avatar } from "react-native-elements"
 import { auth } from '../firebase'
 
 const CustomListScreen = ({ navigation }) => {
-
-
     return (
         <ListItem>
             <Avatar

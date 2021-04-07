@@ -5,6 +5,7 @@ import { Avatar } from 'react-native-elements/dist/avatar/Avatar'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import CustomListScreen from '../Components/CustomListScreen'
 import { auth } from "../firebase"
+import { AntDesign, SimpleLineIcons } from "@expo/vector-icons"
 
 const Home = ({ navigation }) => {
 
@@ -12,7 +13,6 @@ const Home = ({ navigation }) => {
         auth.signOut().then(() => {
             navigation.replace("Login")
         })
-        // alert("hello wordl")
     }
 
     useLayoutEffect(() => {
@@ -21,17 +21,35 @@ const Home = ({ navigation }) => {
             headerStyle: { backgroundColor: '#ffff' },
             headerTitleStyle: { color: "black" },
             headerTintColor: "black",
+
             headerLeft: () => (
                 <View style={{ marginLeft: 13 }}>
-                    <TouchableOpacity onPress={backuser}>
+                    <TouchableOpacity onPress={backuser} activeOpacity={0.5}>
+
                         <Avatar rounded
                             source={{ uri: auth?.currentUser?.photoURL }}
                         />
                     </TouchableOpacity>
                 </View>
+            ),
+            headerRight: () => (
+                <View style={{
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    width: 80,
+                    marginRight: 20
+                }}>
+
+                    <TouchableOpacity activeOpacity={0.5} >
+                        <AntDesign name="camerao" size={24} color="black" />
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.navigate('AddChat')} activeOpacity={0.5}>
+                        <SimpleLineIcons name="pencil" size={24} color="black" />
+                    </TouchableOpacity>
+                </View>
             )
         })
-    }, [])
+    }, [navigation])
 
     return (
         <SafeAreaView>
