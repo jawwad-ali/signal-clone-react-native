@@ -7,6 +7,7 @@ import Login from './screens/Login';
 import Register from './screens/Register';
 import Home from './screens/Home';
 import AddChat from './screens/AddChat';
+import ChatScreen from './screens/ChatScreen';
 
 const Stack = createStackNavigator();
 
@@ -24,6 +25,7 @@ export default function App() {
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="AddChat" component={AddChat} />
+        <Stack.Screen name="ChatScreen" component={ChatScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -38,4 +40,5 @@ const styles = StyleSheet.create({
   },
 });
 
-// 2.05.02
+// 2.52.43
+// start from chat screen line 96

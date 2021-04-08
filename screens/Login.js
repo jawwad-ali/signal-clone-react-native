@@ -12,7 +12,6 @@ const Login = ({ navigation }) => {
         const unsubscribe = auth.onAuthStateChanged((authUser) => {
             if (authUser) {
                 navigation.replace("Home")
-                console.log(authUser)
             }
         })
         return unsubscribe
@@ -37,6 +36,7 @@ const Login = ({ navigation }) => {
                 <Input
                     placeholder="Email"
                     type="email"
+                    autoCapitalize="none"
                     value={email}
                     onChangeText={(text) => setEmail(text)}
                 />

@@ -14,9 +14,9 @@ const AddChat = ({ navigation }) => {
         })
     }, [])
 
-    const createChat = async () => {
-        await db
-            .collection("chats")
+    const createNewChat = async () => {
+        // creating and stroing chats in "chats" collection
+        await db.collection("chats")
             .add({
                 chatName: input
             })
@@ -36,7 +36,7 @@ const AddChat = ({ navigation }) => {
                     <Icon name="wechat" type="antdesign" size={24} color="black" />
                 }
             />
-            <Button onPress={createChat} title="Create new Chat" />
+            <Button onPress={createNewChat} title="Create new Chat" />
         </View>
     )
 }
@@ -45,6 +45,8 @@ export default AddChat
 
 const styles = StyleSheet.create({
     container: {
-
+        backgroundColor: 'white',
+        padding: 30,
+        height: '100%'
     }
 })
