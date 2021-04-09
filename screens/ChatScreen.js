@@ -71,7 +71,7 @@ const ChatScreen = ({ navigation, route }) => {
             .collection("chats")
             .doc(route.params.id)
             .collection("messages")
-            .orderBy("timestamp", "desc")
+            .orderBy("timestamp", "asc")
             .onSnapshot((snapshot) => setMessages(
                 snapshot.docs.map(doc => ({
                     id: doc.id,
@@ -92,10 +92,25 @@ const ChatScreen = ({ navigation, route }) => {
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                     <>
                         <ScrollView>
-                            {messages.map(({id , data}) => (
-                                <View>
-                                    
-                                </View>
+                            {messages.map(({ id, data }) => (
+                                // <View key={id} >
+                                //     <Avatar />
+                                //     <Text>{data.message}</Text>
+                                // </View>
+                                data.email === auth.currentUser.email ? (
+                                    <View key={id} style={styles.reciever}>
+                                        <Avatar />
+                                        <Text style={styles.recieverText}>
+                                            {data.message}
+                                        </Text>
+                                    </View>
+                                ) : (
+                                    <View key={id} style={styles.sender}>
+                                        <Text style={styles.senderText}>
+                                            {data.message}
+                                        </Text>
+                                    </View>
+                                )
                             ))}
                         </ScrollView>
 
