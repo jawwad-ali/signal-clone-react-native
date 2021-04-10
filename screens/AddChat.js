@@ -10,7 +10,7 @@ const AddChat = ({ navigation }) => {
     useLayoutEffect(() => {
         navigation.setOptions({
             title: "Add a new Chat",
-            headerBackTitle: "Chats"
+            headerBackTitle: "Chats" 
         })
     }, [])
 

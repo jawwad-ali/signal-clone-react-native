@@ -10,7 +10,7 @@ import { AntDesign, SimpleLineIcons } from "@expo/vector-icons"
 const Home = ({ navigation }) => {
     const [chats, setChats] = useState([])
 
-    const backuser = () => {
+    const signOutUser = () => {
         auth.signOut().then(() => {
             navigation.replace("Login")
         })
@@ -36,7 +36,7 @@ const Home = ({ navigation }) => {
 
             headerLeft: () => (
                 <View style={{ marginLeft: 13 }}>
-                    <TouchableOpacity onPress={backuser} activeOpacity={0.5}>
+                    <TouchableOpacity onPress={signOutUser} activeOpacity={0.5}>
 
                         <Avatar rounded
                             source={{ uri: auth?.currentUser?.photoURL }}
@@ -64,7 +64,7 @@ const Home = ({ navigation }) => {
     }, [navigation])
 
     // going to a specific chat
-    const enterChat = (id, chatName) => {
+    const enterChat = (id, chatName) => { 
         navigation.navigate("ChatScreen", {
             id,
             chatName

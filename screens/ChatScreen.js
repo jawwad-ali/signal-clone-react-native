@@ -91,24 +91,38 @@ const ChatScreen = ({ navigation, route }) => {
             >
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                     <>
-                        <ScrollView>
+                        <ScrollView contentContainerStyle={{ paddingTop: 15 }}>
                             {messages.map(({ id, data }) => (
-                                // <View key={id} >
-                                //     <Avatar />
-                                //     <Text>{data.message}</Text>
-                                // </View>
                                 data.email === auth.currentUser.email ? (
                                     <View key={id} style={styles.reciever}>
-                                        <Avatar />
+                                        <Avatar
+                                            position="absolute"
+                                            rounded
+                                            bottom={-15}
+                                            right={-5}
+                                            size={30}
+                                            source={{
+                                                uri: data.photoURL
+                                            }}
+                                        />
                                         <Text style={styles.recieverText}>
                                             {data.message}
                                         </Text>
                                     </View>
                                 ) : (
                                     <View key={id} style={styles.sender}>
-                                        <Text style={styles.senderText}>
-                                            {data.message}
-                                        </Text>
+                                        <Avatar
+                                            position="absolute"
+                                            rounded
+                                            bottom={-15}
+                                            left={-5}
+                                            size={30}
+                                            source={{
+                                                uri: data.photoURL
+                                            }}
+                                        />
+                                        <Text style={styles.senderText}>{data.message}</Text>
+                                        <Text style={styles.senderName}>{data.displayName}</Text>
                                     </View>
                                 )
                             ))}
@@ -130,7 +144,7 @@ const ChatScreen = ({ navigation, route }) => {
                     </>
                 </TouchableWithoutFeedback>
             </KeyboardAvoidingView>
-        </SafeAreaView>
+        </SafeAreaView >
     )
 }
 
@@ -150,9 +164,32 @@ const styles = StyleSheet.create({
         maxWidth: "80%",
         position: "relative"
     },
-    sender: {},
-    recieverText: {},
-    senderText: {},
+    sender: {
+        padding: 15,
+        alignSelf: "flex-start",
+        borderRadius: 20,
+        margin: 15,
+        maxWidth: "80%",
+        position: "relative",
+        backgroundColor: "#2868e6"
+    },
+    recieverText: {
+        color: "black",
+        fontWeight: "500",
+        marginLeft: 10
+    },
+    senderText: {
+        color: "white",
+        fontWeight: "500",
+        marginLeft: 10,
+        marginBottom: 15
+    },
+    senderName: {
+        color: 'white',
+        fontSize: 10,
+        paddingRight: 10,
+        left: 10
+    },
     footer: {
         flexDirection: "row",
         alignItems: "center",

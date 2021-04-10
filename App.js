@@ -14,13 +14,13 @@ const Stack = createStackNavigator();
 const globalScreenOptions = {
   headerStyle: { backgroundColor: "#2c6bed" },
   headerTitleStyle: { color: 'white' },
-  headerTintColor: "white"
+  headerTintColor: "white" 
 }
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={globalScreenOptions}>
+      <Stack.Navigator screenOptions={globalScreenOptions}>  
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="Home" component={Home} />
@@ -40,5 +40,4 @@ const styles = StyleSheet.create({
   },
 });
 
-// 2.52.43
-// start from chat screen line 96
+// 2.55.00
