@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { Avatar } from 'react-native-elements'
 import { AntDesign, FontAwesome, Ionicons } from "@expo/vector-icons"
 import { StatusBar } from 'expo-status-bar'

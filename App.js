@@ -20,7 +20,7 @@ const globalScreenOptions = {
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={globalScreenOptions}>  
+      <Stack.Navigator screenOptions={globalScreenOptions}>   
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Register" component={Register} />
         <Stack.Screen name="Home" component={Home} />
@@ -40,4 +40,4 @@ const styles = StyleSheet.create({
   },
 });
 
-// 2.55.00
+// 3.02.38
